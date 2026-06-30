@@ -1,0 +1,85 @@
+/* ============================================
+   MakanMana? — Design Tokens
+   Tema: chaotic fun macam food court — kuning,
+   oren, energetic. Lawan kutub SolatKu (gelap/spiritual).
+   ============================================ */
+
+:root {
+  /* Backgrounds */
+  --bg: #0d0800;
+  --card: #1a1000;
+  --card-alt: #221500;
+  --border: rgba(255, 200, 0, 0.1);
+
+  /* Primary palette */
+  --yellow: #ffd600;
+  --yellow-dim: #ffd60015;
+  --yellow-border: #ffd60030;
+  --orange: #ff6b00;
+  --orange-dim: #ff6b0015;
+
+  /* Status / accent */
+  --red: #ff2d2d;
+  --green: #22c55e;
+  --teal: #2dd4bf;
+
+  /* Text */
+  --white: #fff8e7;
+  --gray: #6b5c3a;
+  --gray-mid: #8b7a52;
+  --gray-light: #b8a878;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 999px;
+
+  /* Type */
+  --font-display: "Poppins", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
