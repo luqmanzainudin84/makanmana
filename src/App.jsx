@@ -1,16 +1,27 @@
 import { useState } from "react";
 import SpinWheel from "./components/SpinWheel.jsx";
+import BlacklistPanel from "./components/BlacklistPanel.jsx";
 import { FOOD_OPTIONS } from "./data/foods.js";
+import { getBlacklist, toggleBlacklist } from "./utils/storage.js";
 
 export default function App() {
   const [mode, setMode] = useState(null); // null | 'solo' | 'group'
   const [spinning, setSpinning] = useState(false);
   const [result, setResult] = useState(null);
+  const [blacklist, setBlacklist] = useState(() => getBlacklist());
+  const [showBlacklist, setShowBlacklist] = useState(false);
 
   function handleBack() {
     setMode(null);
     setResult(null);
   }
+
+  function handleToggleBlacklist(foodId) {
+    const next = toggleBlacklist(foodId);
+    setBlacklist(next);
+  }
+
+  const availableFoods = FOOD_OPTIONS.filter((f) => !blacklist.includes(f.id));
 
   return (
     <div className="app-shell">
@@ -36,16 +47,28 @@ export default function App() {
 
       {mode === "solo" && (
         <div className="solo-screen">
-          <button className="back-btn" onClick={handleBack}>
-            ← Balik
-          </button>
+          <div className="solo-topbar">
+            <button className="back-btn" onClick={handleBack}>
+              ← Balik
+            </button>
+            <button className="blacklist-trigger" onClick={() => setShowBlacklist(true)}>
+              🙅 Tak Nak List {blacklist.length > 0 && `(${blacklist.length})`}
+            </button>
+          </div>
 
-          <SpinWheel
-            foods={FOOD_OPTIONS}
-            spinning={spinning}
-            setSpinning={setSpinning}
-            onResult={setResult}
-          />
+          {availableFoods.length === 0 ? (
+            <p className="empty-state">
+              Semua makanan dah masuk Tak Nak List! Buka senarai tu balik dan
+              unblock sikit. 😅
+            </p>
+          ) : (
+            <SpinWheel
+              foods={availableFoods}
+              spinning={spinning}
+              setSpinning={setSpinning}
+              onResult={setResult}
+            />
+          )}
 
           {result && (
             <div className="result-card">
@@ -60,6 +83,15 @@ export default function App() {
       )}
 
       {mode === "group" && <div>Group mode — coming in Step 13</div>}
+
+      {showBlacklist && (
+        <BlacklistPanel
+          foods={FOOD_OPTIONS}
+          blacklist={blacklist}
+          onToggle={handleToggleBlacklist}
+          onClose={() => setShowBlacklist(false)}
+        />
+      )}
     </div>
   );
 }

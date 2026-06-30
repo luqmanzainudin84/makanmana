@@ -163,3 +163,126 @@
     transform: translateY(0) scale(1);
   }
 }
+
+/* Solo top bar */
+.solo-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.blacklist-trigger {
+  background: var(--card);
+  border: 1px solid var(--yellow-border);
+  color: var(--gray-light);
+  font-size: 0.85rem;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+.empty-state {
+  color: var(--gray-light);
+  text-align: center;
+  padding: var(--space-7) var(--space-4);
+}
+
+/* Blacklist panel */
+.blacklist-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 10;
+}
+
+.blacklist-panel {
+  background: var(--card);
+  border-top: 1px solid var(--yellow-border);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  width: 100%;
+  max-width: 480px;
+  max-height: 80vh;
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  animation: slide-up 0.25s ease;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.blacklist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blacklist-header h3 {
+  color: var(--yellow);
+  font-size: 1.2rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--gray-light);
+  font-size: 1.2rem;
+  padding: var(--space-1);
+}
+
+.blacklist-sub {
+  color: var(--gray-light);
+  font-size: 0.85rem;
+  margin-top: calc(var(--space-3) * -1);
+}
+
+.blacklist-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  overflow-y: auto;
+}
+
+.blacklist-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--card-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  color: var(--white);
+  font-size: 1rem;
+  text-align: left;
+}
+
+.blacklist-item.is-out {
+  opacity: 0.5;
+  border-color: var(--red);
+}
+
+.blacklist-emoji {
+  font-size: 1.3rem;
+}
+
+.blacklist-name {
+  flex: 1;
+}
+
+.blacklist-check {
+  font-size: 1rem;
+}
+
+.blacklist-done {
+  width: 100%;
+}
