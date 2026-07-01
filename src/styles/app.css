@@ -153,6 +153,112 @@
   font-size: 0.9rem;
 }
 
+.roast-caption {
+  color: var(--orange);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px dashed var(--border);
+}
+
+/* Group mode — forms */
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  margin-top: var(--space-5);
+}
+
+.form-stack h3 {
+  color: var(--white);
+  font-size: 1.1rem;
+}
+
+.text-input {
+  background: var(--card);
+  border: 1px solid var(--yellow-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  color: var(--white);
+  font-size: 1rem;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: var(--yellow);
+}
+
+.form-error {
+  color: var(--red);
+  font-size: 0.85rem;
+}
+
+/* Group mode — lobby */
+.lobby-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  width: 100%;
+  margin-top: var(--space-4);
+}
+
+.room-code-card {
+  background: linear-gradient(135deg, var(--yellow-dim), var(--orange-dim));
+  border: 1px solid var(--yellow-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  text-align: center;
+}
+
+.room-code-card p {
+  color: var(--gray-light);
+  font-size: 0.85rem;
+}
+
+.room-code-card h2 {
+  color: var(--yellow);
+  font-size: 2.5rem;
+  letter-spacing: 0.1em;
+  margin: var(--space-1) 0;
+}
+
+.room-code-hint {
+  font-size: 0.8rem !important;
+}
+
+.member-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.member-list h3 {
+  color: var(--white);
+  font-size: 1rem;
+  margin-bottom: var(--space-1);
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.95rem;
+}
+
+.host-tag {
+  background: var(--yellow-dim);
+  color: var(--yellow);
+  font-size: 0.7rem;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+}
+
 @keyframes pop-in {
   from {
     opacity: 0;
@@ -185,6 +291,72 @@
   color: var(--gray-light);
   text-align: center;
   padding: var(--space-7) var(--space-4);
+}
+
+.avoid-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--gray-light);
+  font-size: 0.9rem;
+  align-self: flex-start;
+}
+
+.avoid-toggle input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--yellow);
+}
+
+.streak-badge {
+  color: var(--orange);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.badge-toast {
+  position: fixed;
+  bottom: var(--space-5);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card);
+  border: 1px solid var(--yellow-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  max-width: 90vw;
+  z-index: 20;
+  animation: badge-pop 0.3s ease;
+}
+
+.badge-toast-icon {
+  font-size: 1.8rem;
+}
+
+.badge-toast strong {
+  color: var(--yellow);
+  display: block;
+  font-size: 0.95rem;
+}
+
+.badge-toast p {
+  color: var(--gray-light);
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+@keyframes badge-pop {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 /* Blacklist panel */
